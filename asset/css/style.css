@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #ff1b96;
+  --secondary: #ff82b8;
+  --primaryBg: #121212;
+  --secondaryBg: #282828;
+  --placeholderBg: #3f3f3f;
+}
+
+body {
+  color: white;
+  background-color: var(--primaryBg);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>truc-nt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "var(--primary)",
+              secondary: "var(--secondary)",
+              primaryBg: "var(--primaryBg)",
+              secondaryBg: "var(--secondaryBg)",
+              placeholderBg: "var(--placeholderBg)",
+            },
+            keyframes: {
+              blink: {
+                "0%, 50%": { opacity: "1" },
+                "50.01%, 100%": { opacity: "0" },
+              },
+              slideInLeft: {
+                "0%": { opacity: 0, transform: "translateX(-100%)" },
+                "100%": { opacity: 1, transform: "translateX(0)" },
+              },
+              slideInRight: {
+                "0%": { opacity: 0, transform: "translateX(100%)" },
+                "100%": { opacity: 1, transform: "translateX(0)" },
+              },
+              slideFromBottom: {
+                "0%": { opacity: 0, transform: "translateY(100%)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+              fadeIn: {
+                "0%": { opacity: 0, transform: "scale(0)" },
+                "100%": { opacity: 1, transform: "scale(1)" },
+              },
+            },
+            animation: {
+              blink: "blink 0.7s infinite",
+              slideInLeft: "slideInLeft 0.5s ease-out",
+              slideInRight: "slideInRight 0.5s ease-out",
+              slideFromBottom: "slideFromBottom 0.5s ease-out",
+              fadeIn: "fadeIn 0.5s ease-out",
+            },
+          },
+        },
+      };
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+      canvas {
+        display: block;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fontawesome.min.css"
+    />
+    <link rel="stylesheet" href="asset/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <header class="bg-primaryBg fixed top-0 left-0 w-full shadow-md z-20">
+      <div class="md:max-w-7xl mx-auto px-4 sm:px-6 px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="text-primary font-bold">truc-nt</a>
+          <div class="relative">
+            <button id="nav-menu-button" class="w-6 md:hidden text-primary">
+              <i class="fa-solid fa-bars"></i>
+              <svg
+                id="x-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="hidden size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+            <div class="absolute md:relative right-0">
+              <nav
+                id="nav-menu"
+                class="bg-secondaryBg md:bg-transparent p-4 pl-16 rounded flex flex-col space-y-2 items-end md:flex-row md:space-x-4 md:space-y-0 transform transition-transform duration-200 ease-in-out scale-y-0 md:scale-y-100 origin-top"
+              >
+                <a href="#home" class="text-primary hover:text-primary">Home</a>
+                <a href="#experience" class="hover:text-primary">Experience</a>
+                <a href="#project" class="hover:text-primary">Projects</a>
+                <a href="#contact" class="hover:text-primary">Contact</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="relative flex flex-col space-y-8 md:max-w-7xl mx-auto px-4 sm:px-6 px-8 pb-16"
+    >
+      <section
+        id="home"
+        class="relative min-h-screen flex items-center justify-center"
+      >
+        <div class="flex flex-col space-y-8">
+          <div class="flex flex-col space-y-2">
+            <h6 class="text-xl font-bold">Hello, It's Me</h6>
+            <h1 class="text-4xl md:text-6xl font-bold text-primary">
+              Truc Nguyen
+            </h1>
+            <h2 class="text-2xl md:text-4xl font-bold">
+              A <span id="job"></span
+              ><span class="cursor animate-blink">|</span>
+            </h2>
+          </div>
+          <div>
+            <button class="px-4 py-2 bg-primary rounded-2xl">
+              <a href="asset/TrucNguyen-Resume.pdf" target="_blank">
+                My resume <i class="fa-solid fa-download"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-10 right-0 flex flex-col space-y-4 items-center"
+        >
+          <div class="font-bold mb-1 inline-block transform rotate-90">
+            Find me
+          </div>
+
+          <div class="border-l-2 h-20"></div>
+          <a href="http://www.linkedin.com/in/truc-nt" target="_blank">
+            <i class="fa-brands fa-linkedin text-4xl text-primary"></i>
+          </a>
+          <a href="http://www.github.com/truc-nt" target="_blank">
+            <i class="fa-brands fa-github text-4xl text-primary"></i>
+          </a>
+          <a href="http://www.github.com/truc-nt" target="_blank">
+            <i class="fa-solid fa-envelope text-4xl text-primary"></i>
+          </a>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h6 class="font-bold">WHAT I HAVE DONE SO FAR</h6>
+        <h1 class="font-bold text-4xl text-primary mb-4">Work Experience</h1>
+        <div></div>
+      </section>
+
+      <section id="project">
+        <h6 class="font-bold">MY LITTLE WORK</h6>
+        <h1 class="font-bold text-4xl text-primary mb-4">Project</h1>
+        <div></div>
+      </section>
+
+      <section id="contact">
+        <h6 class="font-bold">GET IN TOUCH WITH ME</h6>
+        <h1 class="font-bold text-4xl text-primary mb-4">Contact</h1>
+        <form
+          id="contactForm"
+          action="./util/email.php"
+          method="post"
+          class="bg-secondaryBg rounded-lg p-4 md:p-6 flex flex-col gap-4"
+        >
+          <label class="flex flex-col gap-2">
+            <span class="text-base md:text-xl text-primary font-bold"
+              >Your Name</span
+            >
+            <input
+              type="text"
+              name="name"
+              placeholder="What's your good name?"
+              class="bg-placeholderBg py-2 px-4 rounded-md text-xs md:text-sm"
+              required
+            />
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="text-base md:text-xl text-primary font-bold text-base"
+              >Your Email</span
+            >
+            <input
+              type="email"
+              name="email"
+              placeholder="What's your email?"
+              class="bg-placeholderBg py-2 px-4 rounded-md text-xs md:text-sm"
+              required
+            />
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="text-base md:text-xl text-primary font-bold text-base"
+              >Your Email Subject</span
+            >
+            <input
+              type="text"
+              name="subject"
+              placeholder="What's your email subject?"
+              class="bg-placeholderBg py-2 px-4 rounded-md text-xs md:text-sm"
+            />
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="text-base md:text-xl text-primary font-bold text-base"
+              >Your Message</span
+            >
+            <textarea
+              rows="5"
+              name="message"
+              class="bg-placeholderBg py-2 px-4 rounded-md text-xs md:text-sm"
+              placeholder="What do you want to say?"
+              required
+            ></textarea>
+          </label>
+
+          <button
+            type="submit"
+            class="bg-primary py-2 px-4 rounded-md font-bold"
+          >
+            Send
+          </button>
+        </form>
+      </section>
+    </main>
+    <div
+      id="loadingSpinner"
+      class="fixed z-10 inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden"
+    >
+      <div
+        class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"
+      ></div>
+    </div>
+    <div
+      class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div
+        id="modal"
+        class="bg-secondaryBg p-4 md:p-6 shadow-xl transform transition-all max-w-lg w-full rounded-lg"
+      >
+        <div class="flex justify-between items-center">
+          <h2 class="text-base md:text-xl"></h2>
+          <button>&times;</button>
+        </div>
+        <div class="mt-2">
+          <p class="text-sm"></p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="asset/js/util.js"></script>
+    <script type="module" src="asset/js/header.js"></script>
+    <script type="module" src="asset/js/experience.js"></script>
+    <script type="module" src="asset/js/project.js"></script>
+    <script type="module" src="asset/js/contact.js"></script>
+  </body>
+</html>
