@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Subject = empty($subject) ? 'Message from portfolio' : $subject;
         $mail->Body    = $message;
 
-        //$mail->send();
+        $mail->send();
         echo json_encode(['success' => true]);
     } catch (Throwable $t) {
         echo json_encode(['success' => false, 'error' => $t->getMessage()]);

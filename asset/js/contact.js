@@ -15,7 +15,6 @@ document
     })
       .then((response) => response.json())
       .then((result) => {
-        // Hide the loading spinner
         hideLoadingSpinner();
 
         if (result.success) {
